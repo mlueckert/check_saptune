@@ -39,7 +39,7 @@ def check_sudo(check_string):
 
 def check_saptune_output(check_string):
     check_string = check_string.replace("\n","&&")
-    regex_string = r"saptune\.service: *(?P<saptune_service>.*?)&&.*configured Solution: *(?P<configured_solution>.*?)&&.*system state: *(?P<system_state>.*?)&&.*"
+    regex_string = r"saptune\.service: *(?P<saptune_service>.*?)&&.*(configured|applied) Solution: *(?P<configured_solution>.*?)[&&| (].*system state: *(?P<system_state>.*?)&&.*"
     status = ["OK"]
     output_list = []
     matches = re.search(regex_string, check_string, re.IGNORECASE|re.MULTILINE)
